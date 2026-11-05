@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mix Salon Spa</title>
+<meta name="description" content="Facials, peels, Hydrafacial, K-Headspa and hair services on North Mesa in El Paso, Texas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Figtree:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky slim header, asymmetric hero over a Franklin Mountains ridge line, filterable treatment menu as a priced list, package ledger, head-spa tiers, visit band. */
+:root{
+  --bg:#EDEFEA; --surface:#F8F9F6; --ink:#1C2A26; --muted:#5B6863; --line:#D2D8D1;
+  --accent:#9E3A66; --accent-ink:#FFFFFF; --accent-soft:#F1DCE5; --ridge:#C9D1C8;
+  --display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --maxw:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111816; --surface:#18211E; --ink:#E6ECE8; --muted:#9AA8A2; --line:#2B3732;
+  --accent:#E07AA6; --accent-ink:#1A0F14; --accent-soft:#3A2230; --ridge:#24302C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111816; --surface:#18211E; --ink:#E6ECE8; --muted:#9AA8A2; --line:#2B3732;
+  --accent:#E07AA6; --accent-ink:#1A0F14; --accent-soft:#3A2230; --ridge:#24302C; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:500;text-wrap:balance;margin:0;line-height:1.1}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;font-size:15px;border:0;cursor:pointer;transition:transform .15s ease, filter .15s ease}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ink)}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:20px;padding-block:12px}
+.logo{font-family:var(--display);font-size:24px;text-decoration:none;letter-spacing:.02em;white-space:nowrap}
+.logo i{color:var(--accent)}
+nav.links{display:flex;gap:20px;margin-left:auto;font-size:14px;font-weight:500}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+header.top .btn{padding:9px 16px;font-size:14px}
+@media (max-width:760px){nav.links{display:none}header.top .btn{margin-left:auto}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:end;padding-block:72px 120px;position:relative;z-index:1}
+.hero h1{font-size:clamp(44px,7vw,88px);font-weight:400;letter-spacing:-.01em}
+.hero h1 em{color:var(--accent);font-style:italic}
+.hero p.lede{max-width:46ch;color:var(--muted);font-size:18px;margin:24px 0 32px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.ridge{position:absolute;left:0;right:0;bottom:0;width:100%;height:140px;display:block}
+.ridge path{fill:var(--ridge)}
+.sig{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:28px;min-width:0}
+.sig h2{font-size:30px;margin:10px 0 8px}
+.sig p{color:var(--muted);margin:0 0 20px;font-size:15px}
+.sig .meta{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:16px;font-family:var(--mono);font-size:14px}
+.sig .meta strong{font-family:var(--display);font-size:28px;font-weight:500}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-block:48px 110px}}
+
+/* sections */
+section.block{padding-block:88px}
+.sec-head{display:grid;grid-template-columns:1fr 1.2fr;gap:32px;align-items:end;margin-bottom:40px}
+.sec-head h2{font-size:clamp(34px,4.5vw,52px)}
+.sec-head p{color:var(--muted);margin:0;max-width:52ch}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}section.block{padding-block:64px}}
+
+/* menu filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip{font:500 14px var(--body);padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.count{font-family:var(--mono);font-size:13px;color:var(--muted);margin:0 0 28px}
+
+.group{margin-bottom:48px}
+.group h3{font-size:26px;font-style:italic;padding-bottom:12px;border-bottom:1px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.group h3 span{font-family:var(--mono);font-style:normal;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.svc{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 32px;padding:22px 0;border-bottom:1px solid var(--line)}
+.svc h4{margin:0;font-family:var(--body);font-weight:600;font-size:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.svc p{margin:6px 0 0;color:var(--muted);font-size:15px;max-width:68ch}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+.price{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.price b{display:block;font-family:var(--display);font-size:26px;font-weight:500;line-height:1.1}
+.price small{color:var(--muted);font-size:13px}
+.price .from{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block}
+@media (max-width:560px){.svc{grid-template-columns:1fr}.price{text-align:left;display:flex;gap:12px;align-items:baseline}.price b{display:inline}}
+.empty{color:var(--muted);padding:24px 0}
+.note{font-size:14px;color:var(--muted);border-left:2px solid var(--accent);padding-left:14px;max-width:70ch}
+
+/* packages */
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+.ledger{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:620px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:16px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.num,th.num{text-align:right;font-family:var(--mono)}
+td .pk{font-weight:600}
+td .pk-sub{display:block;color:var(--muted);font-size:14px}
+td.save{color:var(--accent);font-weight:500}
+
+/* head spa */
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.tier{border:1px solid var(--line);border-radius:6px;padding:28px;display:flex;flex-direction:column;gap:14px;background:var(--bg)}
+.tier.feature{border-color:var(--accent)}
+.tier h3{font-size:28px}
+.tier .tp{font-family:var(--mono);font-size:14px;color:var(--muted)}
+.tier .tp b{font-family:var(--display);font-size:34px;color:var(--ink);font-weight:500;margin-right:6px}
+.tier ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px;display:grid;gap:4px}
+.tier .btn{margin-top:auto;align-self:flex-start}
+@media (max-width:860px){.tiers{grid-template-columns:1fr}}
+
+/* hair & more */
+.more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.more div{padding:22px 0;border-bottom:1px solid var(--line)}
+.more h4{margin:0 0 4px;font-size:18px}
+.more p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:700px){.more{grid-template-columns:1fr}}
+
+/* visit */
+.visit{background:var(--ink);color:var(--bg)}
+.visit .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;padding-block:80px}
+.visit h2{font-size:clamp(36px,5vw,60px);color:var(--bg)}
+.visit .eyebrow{color:color-mix(in srgb,var(--bg) 65%,var(--ink))}
+.visit dl{margin:0;display:grid;gap:20px}
+.visit dt{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--bg) 60%,var(--ink))}
+.visit dd{margin:4px 0 0;font-size:18px}
+.visit a{color:var(--bg)}
+.copy{font:500 13px var(--body);margin-left:10px;padding:4px 10px;border-radius:999px;border:1px solid color-mix(in srgb,var(--bg) 40%,var(--ink));background:transparent;color:var(--bg);cursor:pointer}
+.visit .btn{background:var(--bg);color:var(--ink);margin-top:28px}
+@media (max-width:760px){.visit .wrap{grid-template-columns:1fr}}
+footer{padding-block:24px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+</style>
+
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">Mix <i>Salon</i> Spa</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#menu">Facials &amp; peels</a>
+      <a href="#packages">Packages</a>
+      <a href="#headspa">Head spa</a>
+      <a href="#hair">Hair &amp; more</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="btn" href="https://mixsalonspa.glossgenius.com/book" target="_blank" rel="noopener">Book now</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">North Mesa · El Paso, Texas</p>
+        <h1>Skin care with a <em>plan</em>, not a guess.</h1>
+        <p class="lede">Dermalogica, PCA and DMK facials, Hydrafacial, advanced firming treatments, Korean head spa and a Paul Mitchell–trained hair team, all under one roof on North Mesa.</p>
+        <div class="ctas">
+          <a class="btn" href="https://mixsalonspa.glossgenius.com/book" target="_blank" rel="noopener">Book an appointment</a>
+          <a class="btn ghost" href="#menu">Find a treatment</a>
+        </div>
+      </div>
+      <aside class="sig" aria-label="Signature treatment">
+        <p class="eyebrow">Most booked</p>
+        <h2>Oxygen Glo 2 Facial</h2>
+        <p>A deep cleansing facial, a mild PCA Sensi Peel, then a 15-minute oxygen massage.</p>
+        <div class="meta"><span>65 min</span><span><span class="eyebrow">from</span> <strong>$325</strong></span></div>
+      </aside>
+    </div>
+    <svg class="ridge" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 140V98l70-14 60 10 90-38 70 22 80-50 60 18 70-30 90 44 60-12 80 26 70-46 90 30 60-8 90 34 80-22 70 16 90-30 70 20 80 14 70-10 90 20v40z"/>
+    </svg>
+  </section>
+
+  <section class="block" id="menu">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Treatment menu</p><h2>Start with what your skin is doing.</h2></div>
+        <p>Pick a concern to narrow the menu. Not sure? The 75-minute Custom Facial is built around your skin on the day, and it's the best place to start.</p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filter by skin concern"></div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div id="list"></div>
+      <p class="note">Prices marked “from” are starting prices. Customization and add-ons can change the total, and your esthetician will confirm it before your service starts.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="packages">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Series &amp; packages</p><h2>Results build over a series.</h2></div>
+        <p>Most advanced treatments work best in a series. Credits apply automatically when you book. Call or message the spa to buy a package.</p>
+      </div>
+      <div class="ledger">
+        <table>
+          <thead><tr><th>Package</th><th class="num">Sessions</th><th class="num">Price</th><th class="num">Per session</th><th class="num">You save</th></tr></thead>
+          <tbody id="pkgs"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="headspa">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">K-Headspa</p><h2>A facial for your scalp.</h2></div>
+        <p>Korean-style head spa rituals with aromatherapy, a head steamer and the signature water-cascade rinse.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <h3>Classic</h3>
+          <div class="tp"><b>$129</b>75 min</div>
+          <ul><li>Aromatherapy</li><li>Scalp exfoliation</li><li>Hair mask</li><li>Waterfall rinse and head steamer</li><li>Head massage</li></ul>
+          <a class="btn ghost" href="https://mixsalonspa.glossgenius.com/book" target="_blank" rel="noopener">Book Classic</a>
+        </div>
+        <div class="tier feature">
+          <h3>Premier</h3>
+          <div class="tp"><b>$179</b>90 min</div>
+          <ul><li>Aromatherapy</li><li>Microscope scalp analysis</li><li>Custom scalp treatment</li><li>Waterfall rinse and head steamer</li><li>Pressure-point and gua sha massage</li><li>Shoulder and neck massage</li><li>Split-end treatment</li></ul>
+          <a class="btn" href="https://mixsalonspa.glossgenius.com/book" target="_blank" rel="noopener">Book Premier</a>
+        </div>
+        <div class="tier">
+          <h3>Ultimate</h3>
+          <div class="tp"><b>$275</b>105 min</div>
+          <ul><li>Everything in Premier</li><li>Plus a custom facial</li></ul>
+          <a class="btn ghost" href="https://mixsalonspa.glossgenius.com/book" target="_blank" rel="noopener">Book Ultimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="hair">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Hair &amp; more</p><h2>The salon side of Mix.</h2></div>
+        <p>Our award-winning design team includes educators for Paul Mitchell. Book a consultation to plan a new look or refresh the one you have.</p>
+      </div>
+      <div class="more">
+        <div><h4>Highlights</h4><p>Subtle or bold, blended to your natural color. From $105.</p></div>
+        <div><h4>Lowlights</h4><p>Depth and dimension for a softer finish. From $90.</p></div>
+        <div><h4>Cuts &amp; styling</h4><p>Trendy, classic or unique. Pricing set at your consultation.</p></div>
+        <div><h4>Eyelashes</h4><p>Lash services by appointment. See current options when you book.</p></div>
+        <div><h4>Waxing</h4><p>Face and body waxing. See current options when you book.</p></div>
+        <div><h4>Body treatments</h4><p>Back facials and body treatments, plus Venus Bliss Flex contouring on the menu above.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Visit</p>
+        <h2>Find us on North Mesa.</h2>
+        <a class="btn" href="https://mixsalonspa.glossgenius.com/book" target="_blank" rel="noopener">Book online</a>
+      </div>
+      <dl>
+        <div><dt>Address</dt><dd>N. Mesa St. at Camelot Heights Dr.<br>El Paso, TX 79912<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Mix+Salon+Spa+N+Mesa+St+Camelot+Heights+El+Paso+TX+79912" target="_blank" rel="noopener">Get directions</a></dd></div>
+        <div><dt>Phone</dt><dd><span id="phone">(915) 351-0032</span><button class="copy" id="copyPhone" type="button">Copy</button></dd></div>
+        <div><dt>Follow</dt><dd><a href="https://www.instagram.com/mixsalonspa" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/mixsalonspa" target="_blank" rel="noopener">Facebook</a></dd></div>
+        <div><dt>Pay later</dt><dd>Buy now, pay later is available in person for bookings from $50 to $4,000.</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Mix Salon Spa · El Paso, Texas</span><span>Prices subject to change.</span></div></footer>
+
+<script>
+const S=[
+ // group: facial | peel | advanced | body
+ {g:"facial",n:"75 Custom Facial",p:150,d:75,from:false,tag:"Start here",c:["all"],t:"A fully personalized treatment built around what your skin needs that day. The best first visit."},
+ {g:"facial",n:"Oxygen Glo 2 Facial",p:325,d:65,from:true,tag:"Most booked",c:["glow","congestion"],t:"Deep cleansing facial, a mild PCA Sensi Peel and a 15-minute oxygen massage."},
+ {g:"facial",n:"Hydrafacial MD",p:275,d:45,from:true,c:["glow","congestion"],t:"Patented Vortex-Fusion technology to cleanse, extract and hydrate in one pass."},
+ {g:"facial",n:"Acne Treatment",p:150,d:65,from:true,c:["acne"],t:"Built for adult acne, including the redness and dark marks that linger after breakouts clear."},
+ {g:"facial",n:"Mix Deep Cleansing Facial",p:179,d:75,from:true,c:["congestion"],t:"Purges impurities and leaves the complexion refreshed."},
+ {g:"facial",n:"Anti-Aging Facial",p:225,d:75,from:true,c:["aging"],t:"Targets fine lines and restores a youthful glow."},
+ {g:"facial",n:"AGE Smart Treatment",p:225,d:50,from:true,c:["aging","pigment"],t:"Dermalogica's most powerful treatment for premature aging, photoaging and sun damage."},
+ {g:"facial",n:"Sensitive Skin Treatment",p:175,d:65,from:true,c:["sensitive"],t:"Dermalogica UltraCalming relief for red, itchy, reactive skin, aimed at the triggers behind flare-ups."},
+ {g:"facial",n:"Gentlemen's Facial",p:195,d:65,from:true,c:["congestion","sensitive"],t:"Deep cleansing and calming care for shave irritation, with skin and shaving tips."},
+ {g:"facial",n:"Teen Facial",p:175,d:65,from:false,c:["acne","congestion"],t:"Clears blackheads, bumps and congestion and helps prevent future breakouts."},
+ {g:"facial",n:"Micro-Zone Eye Rescue",p:65,d:25,from:true,tag:"Add-on",c:["aging"],t:"Peptide eye treatment for dark circles, puffiness, lines and loss of firmness."},
+ {g:"peel",n:"PCA Sensi Peel",p:195,d:40,from:false,c:["sensitive","pigment"],t:"Gentle peel for sensitive skin and first-timers. Brightens, treats sun damage and helps calm rosacea."},
+ {g:"peel",n:"PCA Enhanced Peels",p:175,d:45,from:false,c:["pigment","acne","aging"],t:"AHAs and kojic acid with Jessner's solution, optional hydroquinone. Softens lines and evens tone, especially in oily skin."},
+ {g:"peel",n:"PCA Salicylic Clarifying Mask",p:195,d:45,from:false,c:["acne"],t:"20% salicylic blend with cherry extract and vitamin E for breakout-prone, dull skin."},
+ {g:"peel",n:"PCA Detox Deep Pore Treatment",p:175,d:45,from:true,c:["congestion","acne"],t:"Dissolves impactions and blackheads with strong antibacterial and antioxidant action."},
+ {g:"peel",n:"Hydrating Dermalogica Peel",p:179,d:55,from:true,c:["aging","pigment","acne"],t:"Expert Strength BioActive Peel for lines, pigment and acne. No downtime."},
+ {g:"peel",n:"Bio Service Peel",p:179,d:60,from:true,c:["glow","texture"],t:"Gentle exfoliation and nourishment for smoother, brighter skin."},
+ {g:"peel",n:"Dermaplane",p:195,d:60,from:true,c:["texture"],t:"Removes dead skin and peach fuzz so products absorb better. Works on all skin types."},
+ {g:"peel",n:"Gotta Glow Microderm",p:179,d:55,from:false,c:["glow","texture"],t:"Smoother, brighter skin in a single session."},
+ {g:"peel",n:"Microdermabrasion",p:225,d:65,from:true,c:["texture","glow"],t:"Exfoliates and renews for a more even, radiant complexion."},
+ {g:"advanced",n:"HydraLuxe Plus",p:325,d:60,from:false,c:["glow","congestion"],t:"An advanced Hydrafacial with boosters and finishing care chosen for your skin."},
+ {g:"advanced",n:"DMK Skin Reset",p:325,d:60,from:false,c:["congestion","texture","aging"],t:"DMK enzyme therapy that deeply cleanses, rebalances and supports natural renewal."},
+ {g:"advanced",n:"Lift + Define",p:325,d:60,from:false,c:["firming","aging"],t:"Radiofrequency and ultrasound for firmness, fine lines and jawline definition."},
+ {g:"advanced",n:"EXOGLOW Renewal",p:325,d:80,from:false,c:["aging","texture"],t:"Professional exosome care for texture, dullness, fine lines and pores."},
+ {g:"advanced",n:"GLP-1 Glow + Firm",p:325,d:60,from:false,c:["firming"],t:"Hydration and peptide care for skin that has lost firmness during significant weight loss."},
+ {g:"advanced",n:"Tribella Treatment",p:650,d:60,from:false,c:["aging","pigment","firming"],t:"Three advanced skin technologies combined in one treatment."},
+ {g:"body",n:"Purifying Back Facial",p:225,d:65,from:false,c:["congestion","acne"],t:"Clears impurities on the back while releasing muscle tension."},
+ {g:"body",n:"Skin Brightening Treatment",p:225,d:65,from:true,c:["pigment"],t:"Targets dark spots on the hands, finished with an SPF moisturizer."},
+ {g:"body",n:"Laser Hair Removal",p:375,d:80,from:false,c:[],t:"Long-lasting hair reduction."},
+ {g:"body",n:"Venus Bliss Flex",p:798,d:90,from:false,c:["firming"],t:"3-in-1 body contouring: laser lipolysis, RF skin tightening and muscle stimulation."},
+ {g:"body",n:"Venus Bliss Flex: Fall Special",p:525,d:90,from:false,tag:"Limited time",c:["firming"],t:"A single 3-in-1 session at a seasonal price. The 4-session series is lower per visit."}
+];
+const G={facial:"Facials",peel:"Peels & resurfacing",advanced:"Advanced treatments",body:"Body & hair removal"};
+const C=[["any","All treatments"],["acne","Acne & breakouts"],["aging","Lines & aging"],["firming","Firming"],["glow","Dull skin & glow"],["congestion","Pores & congestion"],["pigment","Dark spots"],["sensitive","Sensitive & redness"],["texture","Rough texture"]];
+const P=[
+ ["Oxygen Glo 2 Glow Series","4 Oxygen Glo 2 facials",4,999,301],
+ ["HydraLuxe Glow Series","4 HydraLuxe Plus treatments",4,999,301],
+ ["DMK Skin Reset Series","4 DMK enzyme treatments",4,999,301],
+ ["Lift + Define Series","4 RF and ultrasound treatments",4,999,301],
+ ["EXOGLOW Renewal Series","3 exosome renewal treatments",3,749,226],
+ ["GLP-1 Glow + Firm Series","3 customized facials",3,749,226],
+ ["GLP-1 Glow + Firm Face + Neck","3 face and neck treatments",3,899,76],
+ ["Venus Bliss Flex Series","4 body-contouring sessions",4,1500,1692]
+];
+const usd=n=>"$"+n.toLocaleString("en-US",{maximumFractionDigits:0});
+let cur="any";
+try{const s=localStorage.getItem("mix-concern");if(s&&C.some(c=>c[0]===s))cur=s;}catch(e){}
+
+const fEl=document.getElementById("filters");
+C.forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.className="chip";b.id="chip-"+k;b.textContent=l;b.dataset.k=k;b.addEventListener("click",()=>{cur=k;try{localStorage.setItem("mix-concern",k)}catch(e){}render()});fEl.appendChild(b)});
+
+function render(){
+  fEl.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===cur?"true":"false"));
+  const items=S.filter(s=>cur==="any"||s.c.includes(cur)||s.c.includes("all"));
+  document.getElementById("count").textContent=items.length+" treatment"+(items.length===1?"":"s")+(cur==="any"?"":" for "+C.find(c=>c[0]===cur)[1].toLowerCase());
+  const list=document.getElementById("list");list.innerHTML="";
+  Object.keys(G).forEach(g=>{
+    const rows=items.filter(s=>s.g===g);if(!rows.length)return;
+    const div=document.createElement("div");div.className="group";
+    div.innerHTML='<h3>'+G[g]+'<span>'+rows.length+'</span></h3>';
+    rows.forEach(s=>{
+      const r=document.createElement("article");r.className="svc";
+      r.innerHTML='<div><h4>'+s.n+(s.tag?' <span class="tag">'+s.tag+'</span>':'')+'</h4><p>'+s.t+'</p></div>'+
+        '<div class="price">'+(s.from?'<span class="from">from</span>':'')+'<b>'+usd(s.p)+'</b><small>'+s.d+' min</small></div>';
+      div.appendChild(r);
+    });
+    list.appendChild(div);
+  });
+}
+render();
+
+document.getElementById("pkgs").innerHTML=P.map(([n,sub,q,pr,sv])=>
+  '<tr><td><span class="pk">'+n+'</span><span class="pk-sub">'+sub+'</span></td><td class="num">'+q+'</td><td class="num">'+usd(pr)+'</td><td class="num">'+usd(Math.round(pr/q))+'</td><td class="num save">'+usd(sv)+'</td></tr>').join("");
+
+document.getElementById("copyPhone").addEventListener("click",e=>{
+  const b=e.currentTarget,t=document.getElementById("phone").textContent;
+  const done=()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1600)};
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(done).catch(sel)}else sel();
+  function sel(){const r=document.createRange();r.selectNodeContents(document.getElementById("phone"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected"}
+});
+</script>
+
+</body>
+</html>
